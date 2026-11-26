@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Gate;
 
@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        URL::forceScheme('https');
         Gate::policy(CatalogoMedicamentos::class, CatalogoMedicamentosPolicy::class);
         Gate::policy(Cita::class, CitaPolicy::class);
         Gate::policy(Diagnostico::class, DiagnosticoPolicy::class);
